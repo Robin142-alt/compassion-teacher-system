@@ -44,6 +44,7 @@ This now starts the local Huruma API and serves the app from the same process.
 - `index.html` - app shell and screens
 - `styles.css` - UI styling and responsive layout
 - `assets/app.js` - seeded data, rendering, and interactions
+- `seed-state.json` - backend seed snapshot used for bootstrap and reset flows
 - `huruma-api.js` - shared local/Vercel API, Neon/PostgreSQL persistence, and session handling
 - `api/[route].js` - Vercel function entrypoint for `/api/*`
 - `manifest.webmanifest` - installable app metadata

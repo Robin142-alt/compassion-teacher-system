@@ -1,0 +1,719 @@
+{
+  "teacher": {
+    "name": "Teacher Grace Mwende",
+    "context": "Kitui cluster - 3 active groups - Offline ready"
+  },
+  "users": [
+    {
+      "id": "usr-grace",
+      "name": "Grace Mwende",
+      "username": "grace@huruma.local",
+      "role": "teacher",
+      "context": "Kitui cluster - Grade 5 Hope and JSS 1 Courage",
+      "assignedClassIds": [
+        "grade5-hope",
+        "jss1-courage"
+      ],
+      "focus": "Attendance, class flow, caregiver follow-up"
+    },
+    {
+      "id": "usr-joseph",
+      "name": "Joseph Mutua",
+      "username": "joseph@huruma.local",
+      "role": "fcp_lead",
+      "context": "Kitui and Baringo partner oversight",
+      "assignedClassIds": [
+        "grade5-hope",
+        "jss1-courage",
+        "mentorship-circle"
+      ],
+      "focus": "Referral movement, partner quality, caregiver escalation"
+    },
+    {
+      "id": "usr-anne",
+      "name": "Anne Wairimu",
+      "username": "anne@huruma.local",
+      "role": "safeguarding_lead",
+      "context": "National safeguarding desk",
+      "assignedClassIds": [
+        "grade5-hope",
+        "jss1-courage",
+        "mentorship-circle"
+      ],
+      "focus": "Sensitive case review, safe routing, audit accountability"
+    },
+    {
+      "id": "usr-ruth",
+      "name": "Ruth Achieng",
+      "username": "ruth@huruma.local",
+      "role": "education_coordinator",
+      "context": "Regional education coordination",
+      "assignedClassIds": [
+        "grade5-hope",
+        "jss1-courage",
+        "mentorship-circle"
+      ],
+      "focus": "Program quality, teacher support, county insights"
+    }
+  ],
+  "classes": [
+    {
+      "id": "grade5-hope",
+      "name": "Grade 5 Hope",
+      "ageBand": "9-11 years",
+      "session": "08:30-10:00",
+      "location": "School block A",
+      "focus": "Reading confidence, collaboration, self-belief",
+      "deviceMode": "Shared phone + print activities",
+      "cbcStrands": [
+        "English Activities",
+        "Mathematics Activities",
+        "Environmental Activities"
+      ],
+      "headline": "Reading confidence work with paired coaching and caregiver catch-up slips."
+    },
+    {
+      "id": "jss1-courage",
+      "name": "JSS 1 Courage",
+      "ageBand": "12-14 years",
+      "session": "10:30-12:00",
+      "location": "Church learning hall",
+      "focus": "Problem solving, health awareness, peer voice",
+      "deviceMode": "Offline lesson cards + one teacher handset",
+      "cbcStrands": [
+        "Integrated Science",
+        "Mathematics",
+        "Pre-Technical Studies"
+      ],
+      "headline": "Hands-on science linked to health, resilience, and reflective discussion."
+    },
+    {
+      "id": "mentorship-circle",
+      "name": "Teen Mentorship Circle",
+      "ageBand": "15-18 years",
+      "session": "14:00-15:30",
+      "location": "FCP youth room",
+      "focus": "Youth agency, career readiness, safeguarding awareness",
+      "deviceMode": "Discussion-led, offline journals",
+      "cbcStrands": [
+        "Life Skills",
+        "Career Guidance",
+        "Community Service Learning"
+      ],
+      "headline": "Mentorship circle focused on voice, purpose, and transition readiness."
+    }
+  ],
+  "learners": [
+    {
+      "id": "ln-001",
+      "name": "Mercy Naliaka",
+      "classId": "grade5-hope",
+      "age": 11,
+      "gender": "Girl",
+      "attendanceStatus": "present",
+      "attendanceRate": 96,
+      "wellbeing": 78,
+      "lastContact": "2 days ago",
+      "caregiver": {
+        "name": "Rose Naliaka",
+        "phone": "+254 712 600 114"
+      },
+      "strengths": [
+        "Expressive reading",
+        "Peer encouragement"
+      ],
+      "needs": [
+        "Menstrual health follow-up",
+        "Quiet catch-up corner"
+      ],
+      "competencies": {
+        "literacy": 82,
+        "numeracy": 70,
+        "collaboration": 88,
+        "selfBelief": 67
+      },
+      "flags": [
+        {
+          "label": "Attendance recovered",
+          "tone": "support"
+        },
+        {
+          "label": "Needs dignity pack review",
+          "tone": "accent"
+        }
+      ],
+      "concern": "Had repeated short absences last month linked to menstrual discomfort and low confidence.",
+      "nextStep": "Confirm reusable-pad support and assign one reading leadership task this week.",
+      "county": "Kitui",
+      "riskLevel": 2
+    },
+    {
+      "id": "ln-002",
+      "name": "Brian Muteti",
+      "classId": "grade5-hope",
+      "age": 10,
+      "gender": "Boy",
+      "attendanceStatus": "late",
+      "attendanceRate": 89,
+      "wellbeing": 61,
+      "lastContact": "Yesterday",
+      "caregiver": {
+        "name": "Mutua Brian",
+        "phone": "+254 700 114 322"
+      },
+      "strengths": [
+        "Curiosity",
+        "Mental arithmetic"
+      ],
+      "needs": [
+        "Nutrition follow-up",
+        "Morning arrival support"
+      ],
+      "competencies": {
+        "literacy": 60,
+        "numeracy": 86,
+        "collaboration": 59,
+        "selfBelief": 58
+      },
+      "flags": [
+        {
+          "label": "Repeated late arrival",
+          "tone": "signal"
+        },
+        {
+          "label": "Fatigue observed",
+          "tone": "danger"
+        }
+      ],
+      "concern": "Often arrives tired and hungry. Participates well once settled but loses concentration early.",
+      "nextStep": "Check breakfast support and caregiver transport routine during home call.",
+      "county": "Kitui",
+      "riskLevel": 4
+    },
+    {
+      "id": "ln-003",
+      "name": "Faith Achieng",
+      "classId": "grade5-hope",
+      "age": 10,
+      "gender": "Girl",
+      "attendanceStatus": "present",
+      "attendanceRate": 94,
+      "wellbeing": 84,
+      "lastContact": "Today",
+      "caregiver": {
+        "name": "Jane Achieng",
+        "phone": "+254 711 220 480"
+      },
+      "strengths": [
+        "Storytelling",
+        "Class leadership"
+      ],
+      "needs": [
+        "Stretch numeracy practice"
+      ],
+      "competencies": {
+        "literacy": 90,
+        "numeracy": 74,
+        "collaboration": 91,
+        "selfBelief": 87
+      },
+      "flags": [
+        {
+          "label": "Peer leader",
+          "tone": "support"
+        }
+      ],
+      "concern": "No urgent concern. Ready for extension tasks and class captain opportunities.",
+      "nextStep": "Use as peer mentor in paired reading activity.",
+      "county": "Kitui",
+      "riskLevel": 1
+    },
+    {
+      "id": "ln-004",
+      "name": "Kelvin Odhiambo",
+      "classId": "grade5-hope",
+      "age": 11,
+      "gender": "Boy",
+      "attendanceStatus": "absent",
+      "attendanceRate": 78,
+      "wellbeing": 55,
+      "lastContact": "5 days ago",
+      "caregiver": {
+        "name": "Beatrice Odhiambo",
+        "phone": "+254 718 410 909"
+      },
+      "strengths": [
+        "Drawing",
+        "Science questions"
+      ],
+      "needs": [
+        "Home visit",
+        "Catch-up pack",
+        "Psychosocial check-in"
+      ],
+      "competencies": {
+        "literacy": 52,
+        "numeracy": 58,
+        "collaboration": 63,
+        "selfBelief": 44
+      },
+      "flags": [
+        {
+          "label": "Chronic absence",
+          "tone": "danger"
+        },
+        {
+          "label": "Caregiver unreachable",
+          "tone": "signal"
+        }
+      ],
+      "concern": "Attendance dropped sharply after a family move. Teacher has not reached caregiver this week.",
+      "nextStep": "Escalate to home visit through FCP lead and prepare re-entry plan.",
+      "county": "Kitui",
+      "riskLevel": 5
+    },
+    {
+      "id": "ln-005",
+      "name": "Ruth Jepchirchir",
+      "classId": "jss1-courage",
+      "age": 13,
+      "gender": "Girl",
+      "attendanceStatus": "present",
+      "attendanceRate": 91,
+      "wellbeing": 73,
+      "lastContact": "Yesterday",
+      "caregiver": {
+        "name": "Anne Jepchirchir",
+        "phone": "+254 713 008 001"
+      },
+      "strengths": [
+        "Reflective writing",
+        "Science notebooks"
+      ],
+      "needs": [
+        "Confidence coaching",
+        "STEM club exposure"
+      ],
+      "competencies": {
+        "literacy": 79,
+        "numeracy": 72,
+        "collaboration": 75,
+        "selfBelief": 64
+      },
+      "flags": [
+        {
+          "label": "Ready for STEM stretch",
+          "tone": "support"
+        },
+        {
+          "label": "Confidence dip",
+          "tone": "accent"
+        }
+      ],
+      "concern": "Understates her ability despite strong work completion.",
+      "nextStep": "Invite her to lead one science demo with structured peer support.",
+      "county": "Baringo",
+      "riskLevel": 2
+    },
+    {
+      "id": "ln-006",
+      "name": "Victor Mwangi",
+      "classId": "jss1-courage",
+      "age": 12,
+      "gender": "Boy",
+      "attendanceStatus": "present",
+      "attendanceRate": 88,
+      "wellbeing": 60,
+      "lastContact": "3 days ago",
+      "caregiver": {
+        "name": "Mwangi Karanja",
+        "phone": "+254 722 342 110"
+      },
+      "strengths": [
+        "Practical tasks",
+        "Tool handling"
+      ],
+      "needs": [
+        "Behavior coaching",
+        "Positive discipline support"
+      ],
+      "competencies": {
+        "literacy": 58,
+        "numeracy": 66,
+        "collaboration": 48,
+        "selfBelief": 62
+      },
+      "flags": [
+        {
+          "label": "Peer conflict",
+          "tone": "signal"
+        },
+        {
+          "label": "Needs coaching",
+          "tone": "accent"
+        }
+      ],
+      "concern": "Can disrupt group work when frustrated, especially during written tasks.",
+      "nextStep": "Use task rotation and brief restorative check-in after science block.",
+      "county": "Baringo",
+      "riskLevel": 3
+    },
+    {
+      "id": "ln-007",
+      "name": "Lydia Atieno",
+      "classId": "jss1-courage",
+      "age": 13,
+      "gender": "Girl",
+      "attendanceStatus": "absent",
+      "attendanceRate": 82,
+      "wellbeing": 57,
+      "lastContact": "1 week ago",
+      "caregiver": {
+        "name": "Peter Atieno",
+        "phone": "+254 701 777 640"
+      },
+      "strengths": [
+        "Debate",
+        "Social awareness"
+      ],
+      "needs": [
+        "Mental health check-in",
+        "Safe adult follow-up"
+      ],
+      "competencies": {
+        "literacy": 77,
+        "numeracy": 63,
+        "collaboration": 69,
+        "selfBelief": 49
+      },
+      "flags": [
+        {
+          "label": "Withdrawn recently",
+          "tone": "danger"
+        },
+        {
+          "label": "Needs trusted-adult follow-up",
+          "tone": "signal"
+        }
+      ],
+      "concern": "Sudden withdrawal from group participation and two unexplained absences this week.",
+      "nextStep": "Refer for psychosocial follow-up and assign safe mentor contact.",
+      "county": "Kisumu",
+      "riskLevel": 5
+    },
+    {
+      "id": "ln-008",
+      "name": "Peter Musyoka",
+      "classId": "jss1-courage",
+      "age": 12,
+      "gender": "Boy",
+      "attendanceStatus": "late",
+      "attendanceRate": 85,
+      "wellbeing": 68,
+      "lastContact": "Today",
+      "caregiver": {
+        "name": "Tabitha Musyoka",
+        "phone": "+254 728 633 702"
+      },
+      "strengths": [
+        "Mechanical reasoning",
+        "Team energy"
+      ],
+      "needs": [
+        "Structured homework support"
+      ],
+      "competencies": {
+        "literacy": 57,
+        "numeracy": 79,
+        "collaboration": 72,
+        "selfBelief": 70
+      },
+      "flags": [
+        {
+          "label": "Homework inconsistent",
+          "tone": "signal"
+        }
+      ],
+      "concern": "Strong in practical work but needs a tighter home study routine.",
+      "nextStep": "Send caregiver prompt with two-step homework routine.",
+      "county": "Machakos",
+      "riskLevel": 2
+    },
+    {
+      "id": "ln-009",
+      "name": "Naomi Wanjiku",
+      "classId": "mentorship-circle",
+      "age": 16,
+      "gender": "Girl",
+      "attendanceStatus": "present",
+      "attendanceRate": 95,
+      "wellbeing": 88,
+      "lastContact": "Yesterday",
+      "caregiver": {
+        "name": "Esther Wanjiku",
+        "phone": "+254 712 880 250"
+      },
+      "strengths": [
+        "Public speaking",
+        "Peer support"
+      ],
+      "needs": [
+        "Career exposure",
+        "University pathway information"
+      ],
+      "competencies": {
+        "literacy": 91,
+        "numeracy": 82,
+        "collaboration": 94,
+        "selfBelief": 90
+      },
+      "flags": [
+        {
+          "label": "Youth ambassador",
+          "tone": "support"
+        }
+      ],
+      "concern": "Ready to mentor younger girls and speak at caregiver forum.",
+      "nextStep": "Invite to co-facilitate goal-setting session.",
+      "county": "Nairobi",
+      "riskLevel": 1
+    },
+    {
+      "id": "ln-010",
+      "name": "Dennis Kiptoo",
+      "classId": "mentorship-circle",
+      "age": 17,
+      "gender": "Boy",
+      "attendanceStatus": "present",
+      "attendanceRate": 87,
+      "wellbeing": 64,
+      "lastContact": "3 days ago",
+      "caregiver": {
+        "name": "Kiptoo Cheruiyot",
+        "phone": "+254 714 009 755"
+      },
+      "strengths": [
+        "Leadership",
+        "Football coaching"
+      ],
+      "needs": [
+        "Drug-use prevention coaching",
+        "Career mentor"
+      ],
+      "competencies": {
+        "literacy": 69,
+        "numeracy": 71,
+        "collaboration": 78,
+        "selfBelief": 61
+      },
+      "flags": [
+        {
+          "label": "Substance-risk peer network",
+          "tone": "danger"
+        },
+        {
+          "label": "Responds well to mentors",
+          "tone": "support"
+        }
+      ],
+      "concern": "Spends time with older peers linked to substance-use risk near market center.",
+      "nextStep": "Maintain youth mentor check-in and involve sports leadership role.",
+      "county": "Nakuru",
+      "riskLevel": 4
+    },
+    {
+      "id": "ln-011",
+      "name": "Sharon Akoth",
+      "classId": "mentorship-circle",
+      "age": 15,
+      "gender": "Girl",
+      "attendanceStatus": "present",
+      "attendanceRate": 90,
+      "wellbeing": 76,
+      "lastContact": "Today",
+      "caregiver": {
+        "name": "Hellen Akoth",
+        "phone": "+254 719 280 100"
+      },
+      "strengths": [
+        "Design thinking",
+        "Journaling"
+      ],
+      "needs": [
+        "Enterprise skills",
+        "Savings group exposure"
+      ],
+      "competencies": {
+        "literacy": 84,
+        "numeracy": 74,
+        "collaboration": 80,
+        "selfBelief": 78
+      },
+      "flags": [
+        {
+          "label": "Ready for entrepreneurship track",
+          "tone": "accent"
+        }
+      ],
+      "concern": "No urgent concern. Wants practical business and savings guidance.",
+      "nextStep": "Connect to youth entrepreneurship mini-project.",
+      "county": "Siaya",
+      "riskLevel": 1
+    },
+    {
+      "id": "ln-012",
+      "name": "Samuel Noor",
+      "classId": "mentorship-circle",
+      "age": 18,
+      "gender": "Boy",
+      "attendanceStatus": "absent",
+      "attendanceRate": 76,
+      "wellbeing": 58,
+      "lastContact": "1 week ago",
+      "caregiver": {
+        "name": "Asha Noor",
+        "phone": "+254 723 555 210"
+      },
+      "strengths": [
+        "Digital curiosity",
+        "Repair skills"
+      ],
+      "needs": [
+        "Transition counselling",
+        "TVET pathway guidance",
+        "Home visit"
+      ],
+      "competencies": {
+        "literacy": 65,
+        "numeracy": 69,
+        "collaboration": 55,
+        "selfBelief": 52
+      },
+      "flags": [
+        {
+          "label": "Transition risk",
+          "tone": "danger"
+        },
+        {
+          "label": "Needs pathway clarity",
+          "tone": "signal"
+        }
+      ],
+      "concern": "Uncertain after exam results and missing mentorship sessions.",
+      "nextStep": "Escalate transition counselling and share TVET options with caregiver.",
+      "county": "Isiolo",
+      "riskLevel": 5
+    }
+  ],
+  "notes": [
+    {
+      "id": "note-1",
+      "learnerId": "ln-002",
+      "text": "Breakfast support discussed with caregiver. Trialing earlier wake-up routine for one week.",
+      "createdAt": "2026-04-24 16:20"
+    },
+    {
+      "id": "note-2",
+      "learnerId": "ln-007",
+      "text": "Observed withdrawal during pair work. Will assign safe mentor and quiet check-in tomorrow.",
+      "createdAt": "2026-04-24 12:10"
+    }
+  ],
+  "referrals": [
+    {
+      "id": "ref-1",
+      "learnerId": "ln-004",
+      "category": "Home Visit",
+      "urgency": "High",
+      "status": "New",
+      "owner": "FCP Education Lead",
+      "summary": "Chronic absence after family move. Caregiver not responding on phone.",
+      "updatedAt": "Today 08:15"
+    },
+    {
+      "id": "ref-2",
+      "learnerId": "ln-007",
+      "category": "Mental Health",
+      "urgency": "High",
+      "status": "In Follow-up",
+      "owner": "Church Development Worker",
+      "summary": "Withdrawal, reduced participation, unexplained absences.",
+      "updatedAt": "Today 07:45"
+    },
+    {
+      "id": "ref-3",
+      "learnerId": "ln-010",
+      "category": "Safeguarding",
+      "urgency": "Medium",
+      "status": "In Follow-up",
+      "owner": "Youth Mentor",
+      "summary": "Needs structured protection around risky peer influence and market-area exposure.",
+      "updatedAt": "Yesterday 16:00"
+    },
+    {
+      "id": "ref-4",
+      "learnerId": "ln-001",
+      "category": "Menstrual Health",
+      "urgency": "Low",
+      "status": "Closed",
+      "owner": "Girls' Support Focal Person",
+      "summary": "Dignity pack and reusable-pad coaching completed.",
+      "updatedAt": "Yesterday 11:10"
+    }
+  ],
+  "messages": [
+    {
+      "id": "msg-1",
+      "learnerId": "ln-008",
+      "channel": "SMS",
+      "intent": "attendance",
+      "body": "Good evening. Peter was late this week. Please help him begin homework by 7pm and arrive before science block tomorrow.",
+      "status": "Queued",
+      "updatedAt": "Today 09:05"
+    },
+    {
+      "id": "msg-2",
+      "learnerId": "ln-003",
+      "channel": "WhatsApp",
+      "intent": "encouragement",
+      "body": "Faith led reading beautifully today. Thank you for supporting her confidence and practice at home.",
+      "status": "Delivered",
+      "updatedAt": "Yesterday 15:42"
+    }
+  ],
+  "lessonPlans": [
+    {
+      "id": "plan-1",
+      "classId": "grade5-hope",
+      "title": "Reading for confidence and belonging",
+      "updatedAt": "Today 06:50",
+      "steps": [
+        "Warm-up pair reading with confidence prompts.",
+        "Shared reading passage tied to local problem-solving story.",
+        "Reflection circle on courage, support, and asking for help."
+      ]
+    }
+  ],
+  "countyMetrics": [
+    {
+      "county": "Kitui",
+      "attendance": 91,
+      "riskLoad": 6
+    },
+    {
+      "county": "Baringo",
+      "attendance": 87,
+      "riskLoad": 4
+    },
+    {
+      "county": "Kisumu",
+      "attendance": 84,
+      "riskLoad": 5
+    },
+    {
+      "county": "Nakuru",
+      "attendance": 88,
+      "riskLoad": 3
+    }
+  ]
+}

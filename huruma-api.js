@@ -1,18 +1,19 @@
 const crypto = require("node:crypto");
 const fs = require("node:fs");
 const http = require("node:http");
+const os = require("node:os");
 const path = require("node:path");
-const vm = require("node:vm");
 
 const dotenv = require("dotenv");
 const { Pool } = require("pg");
 
 const ROOT = __dirname;
 const PORT = Number(process.env.PORT || 4173);
-const APP_FILE = path.join(ROOT, "assets", "app.js");
-const DATA_DIR = path.join(ROOT, "data");
+const IS_VERCEL = process.env.VERCEL === "1";
+const DATA_DIR = IS_VERCEL ? path.join(os.tmpdir(), "huruma-teacherhub") : path.join(ROOT, "data");
 const STATE_FILE = path.join(DATA_DIR, "state.json");
 const SESSION_COOKIE = "huruma_session";
+const SEED_STATE = require("./seed-state.json");
 
 dotenv.config({ path: path.join(ROOT, ".env.local") });
 dotenv.config({ path: path.join(ROOT, ".env") });
@@ -169,7 +170,7 @@ async function handleVercelRequest(req, res) {
 
 async function createPersistence() {
   fs.mkdirSync(DATA_DIR, { recursive: true });
-  const seedState = normalizeSeedState(extractSeedState());
+  const seedState = normalizeSeedState(cloneJson(SEED_STATE));
 
   if (!DATABASE_URL) {
     console.warn("DATABASE_URL not set. Falling back to file-backed persistence.");
@@ -1028,26 +1029,6 @@ async function readBody(req) {
   } catch {
     return null;
   }
-}
-
-function extractSeedState() {
-  const source = fs.readFileSync(APP_FILE, "utf8");
-  const startToken = "const seedState =";
-  const endToken = "const cbcOptions =";
-  const start = source.indexOf(startToken);
-  const end = source.indexOf(endToken);
-
-  if (start === -1 || end === -1) {
-    throw new Error("Unable to locate seed state in assets/app.js");
-  }
-
-  const objectLiteral = source
-    .slice(start + startToken.length, end)
-    .trim()
-    .replace(/;$/, "");
-
-  const script = new vm.Script(`(${objectLiteral})`);
-  return script.runInNewContext({});
 }
 
 function normalizeSeedState(state) {
