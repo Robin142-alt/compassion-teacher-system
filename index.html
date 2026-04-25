@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Huruma TeacherHub - an offline-first teacher workflow prototype for Compassion Kenya."
+    />
+    <meta name="theme-color" content="#1f5c47" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./assets/icon.svg" type="image/svg+xml" />
+    <title>Huruma TeacherHub</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="auth-gate" id="auth-gate">
+      <section class="auth-card">
+        <p class="eyebrow">Role-aware sign in</p>
+        <h2>Choose your Huruma workspace</h2>
+        <p id="auth-copy">
+          This local build now supports role-aware views. Teachers, FCP leaders,
+          safeguarding leads, and coordinators see different levels of detail.
+        </p>
+        <form id="auth-form" class="auth-form">
+          <label>
+            Username
+            <select id="auth-username"></select>
+          </label>
+          <label>
+            Access code
+            <input
+              id="auth-passcode"
+              type="password"
+              inputmode="numeric"
+              placeholder="Enter local demo access code"
+            />
+          </label>
+          <button class="primary-button" type="submit">Sign in</button>
+        </form>
+        <p id="auth-error" class="auth-error" hidden></p>
+        <div id="auth-user-list" class="auth-user-list"></div>
+      </section>
+    </div>
+
+    <div class="app-shell" id="app-shell" hidden>
+      <aside class="sidebar">
+        <div class="brand-block">
+          <div class="brand-mark">HT</div>
+          <div>
+            <p class="eyebrow">Compassion Kenya</p>
+            <h1>Huruma TeacherHub</h1>
+            <p class="brand-copy">
+              Whole-child teaching, follow-up, and care in one place.
+            </p>
+          </div>
+        </div>
+
+        <section class="teacher-card">
+          <p class="eyebrow">Signed in as</p>
+          <h2 id="teacher-name">Teacher Grace Mwende</h2>
+          <p id="teacher-role" class="role-badge">Teacher</p>
+          <p id="teacher-context">Kitui cluster - 3 active groups - Offline ready</p>
+          <div class="sync-pill">
+            <span class="sync-dot" id="sync-dot"></span>
+            <span id="sync-status">Sync healthy</span>
+          </div>
+          <button class="ghost-button sidebar-button" id="logout-button" type="button">
+            Sign out
+          </button>
+        </section>
+
+        <nav class="main-nav" aria-label="Primary">
+          <button class="nav-link active" data-target="dashboard">
+            <span>Today</span>
+            <small>Live teaching desk</small>
+          </button>
+          <button class="nav-link" data-target="learners">
+            <span>Learners</span>
+            <small>Progress and support</small>
+          </button>
+          <button class="nav-link" data-target="lessons">
+            <span>Lesson Planner</span>
+            <small>CBC + Compassion flow</small>
+          </button>
+          <button class="nav-link" data-target="referrals">
+            <span>Referrals</span>
+            <small>Escalate and close the loop</small>
+          </button>
+          <button class="nav-link" data-target="caregivers">
+            <span>Caregivers</span>
+            <small>Family communication</small>
+          </button>
+          <button class="nav-link" data-target="insights">
+            <span>Insights</span>
+            <small>Partner-level visibility</small>
+          </button>
+        </nav>
+
+        <section class="mini-panel">
+          <p class="eyebrow">This week</p>
+          <ul class="mini-list">
+            <li><strong id="weekly-attendance">92%</strong> attendance captured</li>
+            <li><strong id="weekly-referrals">5</strong> learners need follow-up</li>
+            <li><strong id="weekly-messages">14</strong> caregiver touchpoints queued</li>
+          </ul>
+        </section>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow" id="view-kicker">Teacher workflow desk</p>
+            <h2 id="view-title">Today</h2>
+          </div>
+          <div class="topbar-tools">
+            <label class="search-box" for="global-search">
+              <span>Search</span>
+              <input
+                id="global-search"
+                type="search"
+                placeholder="Learner, class, concern, caregiver..."
+              />
+            </label>
+            <button class="ghost-button" id="reset-demo">Reset demo state</button>
+            <button class="ghost-button" id="save-snapshot">Save local snapshot</button>
+          </div>
+        </header>
+
+        <section class="view active" data-view="dashboard">
+          <div class="hero-card">
+            <div>
+              <p class="eyebrow">Today at a glance</p>
+              <h3 id="hero-headline">Three groups active, six priority learners, one urgent follow-up.</h3>
+              <p id="hero-copy">
+                Start with attendance for Grade 5 Hope, then review the menstrual-health and nutrition follow-ups before the afternoon mentorship circle.
+              </p>
+            </div>
+            <div class="hero-actions">
+              <button class="primary-button" id="open-priority-referrals">Review priority learners</button>
+              <button class="secondary-button" data-jump="lessons">Open lesson planner</button>
+            </div>
+          </div>
+
+          <div class="metrics-grid" id="metrics-grid"></div>
+
+          <div class="dashboard-grid">
+            <article class="panel">
+              <div class="panel-head">
+                <div>
+                  <p class="eyebrow">Teaching schedule</p>
+                  <h3>Active groups</h3>
+                </div>
+                <div class="chip-row" id="class-tabs"></div>
+              </div>
+              <div id="class-overview" class="class-overview"></div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head">
+                <div>
+                  <p class="eyebrow">Early warning</p>
+                  <h3>Priority learners</h3>
+                </div>
+              </div>
+              <div id="priority-list" class="priority-list"></div>
+            </article>
+
+            <article class="panel span-two">
+              <div class="panel-head">
+                <div>
+                  <p class="eyebrow">Attendance capture</p>
+                  <h3 id="attendance-title">Grade 5 Hope</h3>
+                </div>
+                <button class="ghost-button small-button" id="mark-all-present">Mark all present</button>
+              </div>
+              <p id="attendance-lock" class="lock-copy" hidden>
+                This oversight role can review attendance trends here, but classroom updates are locked.
+              </p>
+              <div id="attendance-grid" class="attendance-grid"></div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head">
+                <div>
+                  <p class="eyebrow">Quick action</p>
+                  <h3>Field notes</h3>
+                </div>
+              </div>
+              <p id="notes-lock" class="lock-copy" hidden>
+                This oversight role can review field notes, but only operational roles can add new ones.
+              </p>
+              <form id="quick-note-form" class="stack-form">
+                <label>
+                  Learner
+                  <select id="quick-note-learner"></select>
+                </label>
+                <label>
+                  Note
+                  <textarea
+                    id="quick-note-text"
+                    rows="5"
+                    placeholder="Example: Guardian confirmed the child missed class due to clinic visit. Needs catch-up task and home pack."
+                  ></textarea>
+                </label>
+                <button class="primary-button" type="submit">Save note</button>
+              </form>
+              <div id="quick-note-feed" class="feed-list"></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" data-view="learners">
+          <div class="section-intro">
+            <div>
+              <p class="eyebrow">Learner support desk</p>
+              <h3>Track progress, risk, and strength together</h3>
+            </div>
+            <div class="chip-row" id="learner-filters"></div>
+          </div>
+
+          <div class="learners-layout">
+            <div id="learner-cards" class="learner-cards"></div>
+            <aside class="panel sticky-panel">
+              <div class="panel-head">
+                <div>
+                  <p class="eyebrow">Selected learner</p>
+                  <h3 id="learner-detail-name">Choose a learner</h3>
+                </div>
+              </div>
+              <div id="learner-detail" class="learner-detail empty-state">
+                Select a learner card to view attendance trend, competencies, support needs, and caregiver contacts.
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="view" data-view="lessons">
+          <div class="section-intro">
+            <div>
+              <p class="eyebrow">Lesson planning</p>
+              <h3>Build one plan that serves CBC and holistic child development</h3>
+            </div>
+          </div>
+
+          <div class="lessons-layout">
+            <article class="panel">
+              <div class="panel-head">
+                <div>
+                  <p class="eyebrow">Generate a lesson path</p>
+                  <h3>Planning assistant</h3>
+                </div>
+              </div>
+              <p id="lesson-lock" class="lock-copy" hidden>
+                This oversight role can review lesson plans, but generation is limited to classroom-facing roles.
+              </p>
+              <form id="lesson-form" class="stack-form">
+                <label>
+                  Learner group
+                  <select id="lesson-class"></select>
+                </label>
+                <label>
+                  CBC strand
+                  <select id="lesson-cbc"></select>
+                </label>
+                <label>
+                  Compassion outcome
+                  <select id="lesson-outcome"></select>
+                </label>
+                <label>
+                  Learning challenge
+                  <select id="lesson-challenge">
+                    <option value="mixed-ability">Mixed-ability classroom</option>
+                    <option value="low-connectivity">Low connectivity / no devices</option>
+                    <option value="low-energy">Learner fatigue and low concentration</option>
+                    <option value="inclusion">Inclusive adaptation for disability support</option>
+                  </select>
+                </label>
+                <label>
+                  Teaching focus
+                  <textarea
+                    id="lesson-focus"
+                    rows="4"
+                    placeholder="Example: Build reading confidence while reinforcing self-worth and caregiver involvement."
+                  ></textarea>
+                </label>
+                <button class="primary-button" type="submit">Generate weekly lesson</button>
+              </form>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head">
+                <div>
+                  <p class="eyebrow">Generated output</p>
+                  <h3>Lesson sequence</h3>
+                </div>
+              </div>
+              <div id="lesson-output" class="lesson-output empty-state">
+                Your generated lesson path will appear here with warm-up, core activity, inclusion notes, caregiver follow-up, and evidence to capture.
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" data-view="referrals">
+          <div class="section-intro">
+            <div>
+              <p class="eyebrow">Referral workflow</p>
+              <h3>Move concerns from observation to action</h3>
+            </div>
+            <button class="primary-button" id="open-referral-compose">Create referral</button>
+          </div>
+
+          <div class="referrals-layout">
+            <article class="panel" id="referral-compose-panel">
+              <div class="panel-head">
+                <div>
+                  <p class="eyebrow">New case</p>
+                  <h3>Referral composer</h3>
+                </div>
+              </div>
+              <form id="referral-form" class="stack-form">
+                <label>
+                  Learner
+                  <select id="referral-learner"></select>
+                </label>
+                <label>
+                  Category
+                  <select id="referral-category">
+                    <option value="Safeguarding">Safeguarding</option>
+                    <option value="Mental Health">Mental Health</option>
+                    <option value="Nutrition">Nutrition</option>
+                    <option value="Menstrual Health">Menstrual Health</option>
+                    <option value="Medical Support">Medical Support</option>
+                    <option value="Home Visit">Home Visit</option>
+                  </select>
+                </label>
+                <label>
+                  Urgency
+                  <select id="referral-urgency">
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                  </select>
+                </label>
+                <label>
+                  What happened
+                  <textarea
+                    id="referral-summary"
+                    rows="4"
+                    placeholder="State the concern clearly, without unnecessary private detail."
+                  ></textarea>
+                </label>
+                <button class="primary-button" type="submit">Add referral</button>
+              </form>
+            </article>
+
+            <div id="referral-board" class="referral-board"></div>
+          </div>
+        </section>
+
+        <section class="view" data-view="caregivers">
+          <div class="section-intro">
+            <div>
+              <p class="eyebrow">Caregiver engagement</p>
+              <h3>Short, respectful follow-up that families can act on</h3>
+            </div>
+          </div>
+
+          <div class="caregiver-layout">
+            <article class="panel">
+              <div class="panel-head">
+                <div>
+                  <p class="eyebrow">Compose update</p>
+                  <h3>Message center</h3>
+                </div>
+              </div>
+              <p id="message-lock" class="lock-copy" hidden>
+                This oversight role can review caregiver communication, but new outbound messages are locked.
+              </p>
+              <form id="message-form" class="stack-form">
+                <label>
+                  Caregiver
+                  <select id="message-learner"></select>
+                </label>
+                <label>
+                  Channel
+                  <select id="message-channel">
+                    <option value="SMS">SMS</option>
+                    <option value="WhatsApp">WhatsApp</option>
+                    <option value="Print Slip">Print Slip</option>
+                  </select>
+                </label>
+                <label>
+                  Message intent
+                  <select id="message-template">
+                    <option value="attendance">Attendance nudge</option>
+                    <option value="encouragement">Positive encouragement</option>
+                    <option value="meeting">Meeting reminder</option>
+                    <option value="support">Support follow-up</option>
+                  </select>
+                </label>
+                <label>
+                  Message
+                  <textarea id="message-body" rows="4"></textarea>
+                </label>
+                <button class="primary-button" type="submit">Queue message</button>
+              </form>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head">
+                <div>
+                  <p class="eyebrow">Outbound log</p>
+                  <h3>Queued and delivered</h3>
+                </div>
+              </div>
+              <div id="message-feed" class="feed-list"></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" data-view="insights">
+          <div class="section-intro">
+            <div>
+              <p class="eyebrow">Leadership view</p>
+              <h3>See where support is working and where to intervene next</h3>
+            </div>
+          </div>
+
+          <div class="insights-grid">
+            <article class="panel">
+              <div class="panel-head">
+                <div>
+                  <p class="eyebrow">County pulse</p>
+                  <h3>Attendance and risk by focus area</h3>
+                </div>
+              </div>
+              <div id="county-bars" class="bar-stack"></div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head">
+                <div>
+                  <p class="eyebrow">Outcome tracking</p>
+                  <h3>Holistic growth balance</h3>
+                </div>
+              </div>
+              <div id="outcome-grid" class="outcome-grid"></div>
+            </article>
+
+            <article class="panel span-two">
+              <div class="panel-head">
+                <div>
+                  <p class="eyebrow">Operational focus</p>
+                  <h3>Partner actions for the next 14 days</h3>
+                </div>
+              </div>
+              <div id="action-table" class="action-table"></div>
+            </article>
+
+            <article class="panel span-two">
+              <div class="panel-head">
+                <div>
+                  <p class="eyebrow">Audit trail</p>
+                  <h3>Recent role-protected workspace activity</h3>
+                </div>
+              </div>
+              <div id="audit-feed" class="action-table"></div>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>

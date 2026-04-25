@@ -1,0 +1,17 @@
+{
+  "name": "huruma-teacherhub",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Offline-friendly local MVP for Compassion Kenya teachers and partner staff.",
+  "scripts": {
+    "start": "node server.js",
+    "check": "node --check server.js && node --check app.js",
+    "verify:roles": "node scripts/verify-roles.js",
+    "verify:security": "node scripts/verify-security.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "jsdom": "^29.0.2",
+    "pg": "^8.20.0"
+  }
+}

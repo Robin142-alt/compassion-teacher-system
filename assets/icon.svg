@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Huruma TeacherHub icon</title>
+  <desc id="desc">A warm square icon with HT initials for Huruma TeacherHub.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1f5c47"/>
+      <stop offset="100%" stop-color="#b65d35"/>
+    </linearGradient>
+  </defs>
+  <rect x="18" y="18" width="220" height="220" rx="52" fill="url(#bg)"/>
+  <path d="M78 78h28v39h44V78h28v100h-28v-37h-44v37H78z" fill="#fff8ef"/>
+  <circle cx="194" cy="74" r="14" fill="#d9a441"/>
+</svg>
