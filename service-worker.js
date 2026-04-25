@@ -3,7 +3,7 @@ const APP_ASSETS = [
   "./",
   "./index.html",
   "./styles.css",
-  "./app.js",
+  "./assets/app.js",
   "./manifest.webmanifest",
   "./assets/icon.svg",
 ];

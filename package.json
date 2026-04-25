@@ -4,8 +4,8 @@
   "private": true,
   "description": "Offline-friendly local MVP for Compassion Kenya teachers and partner staff.",
   "scripts": {
-    "start": "node server.js",
-    "check": "node --check server.js && node --check app.js",
+    "start": "node huruma-api.js",
+    "check": "node --check huruma-api.js && node --check assets/app.js && node --check api/[route].js",
     "verify:roles": "node scripts/verify-roles.js",
     "verify:security": "node scripts/verify-security.js"
   },

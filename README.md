@@ -43,8 +43,9 @@ This now starts the local Huruma API and serves the app from the same process.
 ## Files
 - `index.html` - app shell and screens
 - `styles.css` - UI styling and responsive layout
-- `app.js` - seeded data, rendering, and interactions
-- `server.js` - local API, Neon/PostgreSQL persistence, and session handling
+- `assets/app.js` - seeded data, rendering, and interactions
+- `huruma-api.js` - shared local/Vercel API, Neon/PostgreSQL persistence, and session handling
+- `api/[route].js` - Vercel function entrypoint for `/api/*`
 - `manifest.webmanifest` - installable app metadata
 - `service-worker.js` - offline cache
 - `scripts/verify-roles.js` - role rendering verification
@@ -57,6 +58,7 @@ This now starts the local Huruma API and serves the app from the same process.
 - The browser still keeps a local snapshot for offline fallback.
 - Sensitive case masking and caregiver phone masking are now enforced by the API, not just the browser.
 - Signed-out bootstrap and export routes do not expose the workspace dataset.
+- The Vercel deploy uses static site assets plus `/api/*` serverless routes that share the same backend logic as local development.
 
 ## Verification
 With the local server running:

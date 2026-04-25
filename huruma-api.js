@@ -9,7 +9,7 @@ const { Pool } = require("pg");
 
 const ROOT = __dirname;
 const PORT = Number(process.env.PORT || 4173);
-const APP_FILE = path.join(ROOT, "app.js");
+const APP_FILE = path.join(ROOT, "assets", "app.js");
 const DATA_DIR = path.join(ROOT, "data");
 const STATE_FILE = path.join(DATA_DIR, "state.json");
 const SESSION_COOKIE = "huruma_session";
@@ -1038,7 +1038,7 @@ function extractSeedState() {
   const end = source.indexOf(endToken);
 
   if (start === -1 || end === -1) {
-    throw new Error("Unable to locate seed state in app.js");
+    throw new Error("Unable to locate seed state in assets/app.js");
   }
 
   const objectLiteral = source

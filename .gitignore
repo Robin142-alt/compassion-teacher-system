@@ -4,5 +4,8 @@ huruma-home.png
 .env.local
 node_modules/
 .vercel/
+.vercel-*
 server.log
 server-error.log
+
+.vercel
